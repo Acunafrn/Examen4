@@ -1,0 +1,42 @@
+{% extends 'app/base.html' %}
+
+{% block contenido %}
+<div class="container">
+  <section class="products" id="products">
+    {% load humanize %}
+    <br>
+    <h1 class="heading"> Nuestros <span>productos</span> </h1>
+  
+    <div class="box-container">
+        {% for p in productos %}
+        <div class="box">
+         
+            {% if p.imagen %}
+            <div class="image">
+                <img src="{{ p.imagen.url }}" alt="">
+            </div>
+            {% endif %}
+            <div class="content">
+                <h3>{{ p.nombre | title }}</h3>
+                <h6>{{ p.marca | capfirst }}</h6>
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star-half-alt"></i>
+                </div>
+                <div class="price">${{ p.precio | intcomma}}</div>
+                <a href="{% url 'carrito' %}" class="btn btn-success">+</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+  </section>
+
+{% endblock %}
+
+        
+   
+
+   
