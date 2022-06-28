@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+
+  
+    <!-- bootstrap-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="{% static 'app/css/style.css' %}">
+    
+</head>
+<body>
+  
+    <body class="body">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+          <div class="container-fluid">
+            <a class="navbar-brand" href="index2,0.html"></a>
+            <img src="{% static 'app/images/Logo.png' %}" alt="Avatar Logo" style="width:60px;" class="rounded-pill">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mynavbar">
+              <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="index2,0.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="QuienesSomos.html">¿Quiénes Somos?</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{% url 'productos' %}">Productos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="registro.html">registro</a>
+                </li>
+                {% if perms.app.add_producto %}
+                <li class="nav-item">
+                  <a class= "nav-link" href="{% url 'agregar_producto' %}">Agregar productos</a>
+                </li>
+                {% endif %}
+                {% if perms.app.view_producto %}
+                <li class="nav-item">
+                  <a class= "nav-link" href="{% url 'listar_producto' %}">Lista de productos</a>
+                </li>
+                {% endif %}
+              </ul>
+              <form class="d-flex">
+                <input class="form-control me-2" type="text" placeholder="Buscar...">
+                <button class="btn btn-primary" type="button">Buscar</button>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+    <div id="contenido">
+
+        {% block contenido %}
+        {% endblock %}
+
+    </div>
+
+    <footer class="bg-dark text-white py-4">
+      <div class="container">
+          <nav class="row">
+              <a href="#" class="col-3 text-reset text-uppercase d-flex align-items-center">
+                  <img src="{% static 'app/images/Logo.png' %}" alt="Avatar Logo" style="width:60px;" class="img-logo mr-2 rounded-pill" /> FRCA
+              </a>
+              <ul class="col-3 list-unstyled">
+                  <li class="font-weight-bold text-uppercase">Recursos</li>
+                  <li><a href="" class="text-reset">Link 1</a></li>
+                  <li><a href="" class="text-reset">Link 2</a></li>
+                  <li><a href="" class="text-reset">Link 3</a></li>
+
+              </ul>
+
+              <ul class="col-3 list-unstyled">
+                  <li class="font-weight-bold text-uppercase">Links</li>
+                  <li><a href="" class="text-reset">Link 1</a></li>
+                  <li><a href="" class="text-reset">Link 2</a></li>
+                  <li><a href="" class="text-reset">Link 3</a></li>
+
+              </ul>
+
+              <ul class="col-3 list-unstyled">
+                  <li class="font-weight-bold text-uppercase">Redes Sociales</li>
+                  <li class="d-flex justify-content-between">
+
+                      <a href="" class="text-reset"><i class="fa-brands fa-facebook"></i></a>
+                      <a href="" class="text-reset"><i class="fa-brands fa-instagram"></i></a>
+                      <a href="" class="text-reset"><i class="fa-brands fa-twitter"></i></a>
+                      <a href="" class="text-reset"><i class="fa-solid fa-envelope"></i></a>
+                  </li>
+              </ul>
+          </nav>
+
+      </div>
+
+
+
+
+
+
+
+  </footer>
+      <!-- js-->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css">
+      <script src="https://kit.fontawesome.com/ef972176e0.js" crossorigin="anonymous"></script>
+      <script src="{% static 'app/js/carrito.js' %}"></script>
+</body> 
